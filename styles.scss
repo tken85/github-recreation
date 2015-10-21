@@ -20,6 +20,27 @@ header{
       display:inline-block;
     }
   }
+  img{
+    vertical-align: text-bottom;
+  }
+}
+
+nav ul{
+  display:inline-block;
+  list-style: none;
+  a{
+    padding:2px;
+  }
+  li{
+    display:inline-block;
+    input{
+      width: 150px;
+    }
+  }
+}
+
+nav ul:nth-child(1){
+  padding-left: 5px;
 }
 #top-left, #bottom-left{
   padding-left: 0;
@@ -29,7 +50,7 @@ header{
 }
 
 .container {
-  width: 80%;
+  width: 1000px;
   margin: 0 auto;
 }
 
@@ -37,13 +58,23 @@ header{
   border-bottom: 1px solid $gitBack;
 }
 aside {
-  width:250px;
+  width:230px;
   display: inline-block;
+  img{
+    width: 100%;
+  }
 }
 
 section {
-  width: 750px;
+  width: 730px;
   display: inline-block;
+  vertical-align: top;
+  a{
+    padding: 10px;
+  }
+  span{
+    margin-right: 5px;
+  }
 }
 
 aside ul {
@@ -85,4 +116,53 @@ footer {
   span{
     margin: 0 9%;
   }
+}
+
+input {
+  width: 250px;
+  min-height: 30px;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.repositories nav{
+  border-bottom: 1px solid $gitBack;
+}
+
+article {
+  ul{
+    list-style: none;
+    padding-left: 5px;
+  }
+  li{
+  border-bottom: 1px solid $gitBack;
+  padding-bottom: 10px;
+  a{
+    padding-left: 0;
+  }
+}
+}
+.repo-right{
+  float:right;
+  vertical-align: top;
+  li{
+    display: inline-block;
+  }
+}
+.list-left{
+  display: inline-block;
+  width: 60%;
+}
+.list-right{
+  display:inline-block;
+  width: 30%;
+  float: right;
+  li{
+    border: none;
+  }
+}
+
+
+.activities{
+  display: none;
 }

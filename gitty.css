@@ -14,6 +14,21 @@ header {
     display: inline-block; }
     header ul li {
       display: inline-block; }
+  header img {
+    vertical-align: text-bottom; }
+
+nav ul {
+  display: inline-block;
+  list-style: none; }
+  nav ul a {
+    padding: 2px; }
+  nav ul li {
+    display: inline-block; }
+    nav ul li input {
+      width: 150px; }
+
+nav ul:nth-child(1) {
+  padding-left: 5px; }
 
 #top-left, #bottom-left {
   padding-left: 0; }
@@ -22,19 +37,26 @@ header {
   float: right; }
 
 .container {
-  width: 80%;
+  width: 1000px;
   margin: 0 auto; }
 
 .main {
   border-bottom: 1px solid #EDEBEB; }
 
 aside {
-  width: 250px;
+  width: 230px;
   display: inline-block; }
+  aside img {
+    width: 100%; }
 
 section {
-  width: 750px;
-  display: inline-block; }
+  width: 730px;
+  display: inline-block;
+  vertical-align: top; }
+  section a {
+    padding: 10px; }
+  section span {
+    margin-right: 5px; }
 
 aside ul {
   list-style: none;
@@ -66,3 +88,42 @@ footer {
       display: inline-block; }
   footer span {
     margin: 0 9%; }
+
+input {
+  width: 250px;
+  min-height: 30px;
+  border-radius: 2px;
+  font-size: 16px; }
+
+.repositories nav {
+  border-bottom: 1px solid #EDEBEB; }
+
+article ul {
+  list-style: none;
+  padding-left: 5px; }
+
+article li {
+  border-bottom: 1px solid #EDEBEB;
+  padding-bottom: 10px; }
+  article li a {
+    padding-left: 0; }
+
+.repo-right {
+  float: right;
+  vertical-align: top; }
+  .repo-right li {
+    display: inline-block; }
+
+.list-left {
+  display: inline-block;
+  width: 60%; }
+
+.list-right {
+  display: inline-block;
+  width: 30%;
+  float: right; }
+  .list-right li {
+    border: none; }
+
+.activities {
+  display: none; }

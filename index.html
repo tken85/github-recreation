@@ -11,7 +11,7 @@
   <div class="container">
   <ul id="top-left">
     <li><span class="mega-octicon octicon-mark-github"></span></li>
-    <li></li>
+    <li><input type="text" name="search" value="" placeholder="Search Github"></li>
     <li>Pull Requests</li>
     <li>Issues</li>
     <li>Gist</li>
@@ -45,7 +45,42 @@
 
 
   </aside>
-  <section></section>
+  <section>
+    <nav>
+      <a href="#" class="contribNav"><span class="octicon octicon-diff-added"></span>Contributions</a>
+      <a href="#" class="repoNav"><span class="octicon octicon-repo"></span>Repositories</a>
+      <a href="#" class="activityNav"><span class="octicon octicon-rss"></span>Public Activity</a>
+    </nav>
+    <section class="repositories">
+      <nav>
+        <ul>
+          <li><input type="text" name="search" value="" placeholder="Find a repository..."></li>
+          <li><button class="create">Search</button></li>
+        </ul>
+        <ul>
+          <a href=""><li>All</li></a>
+          <a href=""><li>Public</li></a>
+          <a href=""><li>Private</li></a>
+          <a href=""><li>Sources</li></a>
+          <a href=""><li>Fork</li></a>
+          <a href=""><li>Mirrors</li></a>
+          <li><button class="create"><span class="octicon octicon-repo"></span>New</button></li>
+        </ul>
+      </nav>
+        <article>
+        <ul>
+          <!--
+          <li><section class="list-left"><a href="">map-filter</a><br><span>Description</span><br><span>Updated</span></section>
+          <section class="list-right"><ul class="repo-right">
+            <li>javascript</li>
+            <li><span class="octicon octicon-star"></span>0</li>
+            <li><span class="octicon octicon-git-branch"></span>0</li>
+          </ul></section></li> -->
+        </ul>
+      </article>
+    </section>
+    <section class="activities">Yo</section>
+</section>
 </div>
 <footer>
   <div class="container">
@@ -70,6 +105,7 @@
 </div>
 </footer>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/moment/moment.js" charset="utf-8"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="github.js"></script>
     <script src="main.js"></script>
