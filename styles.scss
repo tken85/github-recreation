@@ -1,0 +1,88 @@
+$gitBack: #EDEBEB;
+$linkBlue: #4981C8;
+
+.body{
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color:$linkBlue;
+}
+header{
+  background-color: $gitBack;
+  font-weight: bold;
+  margin-bottom: 10px;
+  ul{
+    display:inline-block;
+    li{
+      display:inline-block;
+    }
+  }
+}
+#top-left, #bottom-left{
+  padding-left: 0;
+}
+#top-right, #bottom-right{
+  float: right;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main{
+  border-bottom: 1px solid $gitBack;
+}
+aside {
+  width:250px;
+  display: inline-block;
+}
+
+section {
+  width: 750px;
+  display: inline-block;
+}
+
+aside ul {
+  list-style: none;
+  padding-left: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid $gitBack;
+  border-bottom: 1px solid $gitBack;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  span{
+    padding-right: 4px;
+  }
+}
+
+.stats {
+  width: 32%;
+  text-align: center;
+}
+
+#follow {
+  padding: 10px 0;
+  border-bottom: 1px solid $gitBack;
+}
+
+
+footer {
+  padding-top:20px;
+  font-size:14px;
+  ul{
+    display:inline-block;
+    li{
+      display:inline-block;
+    }
+  }
+  span{
+    margin: 0 9%;
+  }
+}
