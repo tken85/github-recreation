@@ -10,6 +10,11 @@ a {
   text-decoration: none;
   color:$linkBlue;
 }
+
+ul{
+  list-style: none;
+}
+
 header{
   background-color: $gitBack;
   font-weight: bold;
@@ -27,7 +32,6 @@ header{
 
 nav ul{
   display:inline-block;
-  list-style: none;
   a{
     padding:2px;
   }
@@ -78,7 +82,6 @@ section {
 }
 
 aside ul {
-  list-style: none;
   padding-left: 0;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -165,4 +168,46 @@ article {
 
 .activities{
   display: none;
+}
+
+/*.activity-list{
+
+  &>li{
+    display:inline-block;
+    vertical-align: top;
+
+  }
+
+}
+
+.push-list{
+  border-bottom: 1px solid $gitBack;
+}
+*/
+.push-list-right{
+  vertical-align: top;
+  display: inline-block;
+  width: 650px;
+  ul{
+    vertical-align: top;
+    margin-top:0;
+  }
+}
+
+.push-list-left{
+  display: inline-block;
+  width: 50px;
+}
+
+.activity-list{
+  border-bottom: 1px solid $gitBack;
+  a{
+    padding-left: 0;
+    padding-right:0;
+  }
+  img{
+    height:30px;
+    border-radius:2px;
+    vertical-align: text-top;
+  }
 }

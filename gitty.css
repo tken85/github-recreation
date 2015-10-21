@@ -6,6 +6,9 @@ a {
   text-decoration: none;
   color: #4981C8; }
 
+ul {
+  list-style: none; }
+
 header {
   background-color: #EDEBEB;
   font-weight: bold;
@@ -18,8 +21,7 @@ header {
     vertical-align: text-bottom; }
 
 nav ul {
-  display: inline-block;
-  list-style: none; }
+  display: inline-block; }
   nav ul a {
     padding: 2px; }
   nav ul li {
@@ -59,7 +61,6 @@ section {
     margin-right: 5px; }
 
 aside ul {
-  list-style: none;
   padding-left: 0;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -127,3 +128,39 @@ article li {
 
 .activities {
   display: none; }
+
+/*.activity-list{
+
+  &>li{
+    display:inline-block;
+    vertical-align: top;
+
+  }
+
+}
+
+.push-list{
+  border-bottom: 1px solid $gitBack;
+}
+*/
+.push-list-right {
+  vertical-align: top;
+  display: inline-block;
+  width: 650px; }
+  .push-list-right ul {
+    vertical-align: top;
+    margin-top: 0; }
+
+.push-list-left {
+  display: inline-block;
+  width: 50px; }
+
+.activity-list {
+  border-bottom: 1px solid #EDEBEB; }
+  .activity-list a {
+    padding-left: 0;
+    padding-right: 0; }
+  .activity-list img {
+    height: 30px;
+    border-radius: 2px;
+    vertical-align: text-top; }
