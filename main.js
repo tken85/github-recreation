@@ -95,6 +95,7 @@ var shortActivity = activity.map(function(item){
             message: item.payload.commits[0].message,
             commit_id: item.payload.commits[0].sha,
             commit_url: item.payload.commits[0].url,
+            profile_url: item.actor.url,
 
    }
   }
@@ -103,21 +104,21 @@ var shortActivity = activity.map(function(item){
 //sort activity by time
 
 var sortedActivity = _.sortBy(shortActivity,'time');
-sortedActivity.reverse();
+//sortedActivity.reverse();
 
 // display activities on page based on type of activity
 
 _.each(sortedActivity, function(currVal, idx, arr){
 
   if(currVal.type ==="PushEvent"){
-    $('.activities').append("<div class='activity-list'><section class='push-list-left'><span class='mega-octicon octicon-git-commit'></span></section><section class='push-list-right'><ul><li>" + moment(currVal.created_at).fromNow() + "</li><li>" + currVal.login + " <b>pushed to</b> " + "<a href='" + currVal.ref + "'>Master</a><b> at</b> <a href='"+ currVal.repo_url + "'>" + currVal.repo + "</a></li><li><img src='" + currVal.avatar + "'><span class='octicon octicon-mark-github'></span><a href='"+ currVal.commit_url+"'>"+ currVal.commit_id.slice(0,7) + "</a> "  + currVal.message + "</li></ul></section></div>" )
+    $('.activities').append("<div class='activity-list'><section class='push-list-left'><span class='mega-octicon octicon-git-commit'></span></section><section class='push-list-right'><ul><li>" + moment(currVal.created_at).fromNow() + "</li><li><a href='" + currVal.profile_url +"'>" + currVal.login + "</a> <b>pushed to</b> " + "<a href='" + currVal.ref + "'>master</a><b> at</b> <a href='"+ currVal.repo_url + "'>" + currVal.repo + "</a></li><li><img src='" + currVal.avatar + "'><span class='octicon octicon-mark-github'></span><a href='"+ currVal.commit_url+"'>"+ currVal.commit_id.slice(0,7) + "</a> "  + currVal.message + "</li></ul></section></div>" );
   }
 
   else if(currVal.type ==="CreateEvent"  && currVal.ref_type ==="branch"){
-    $('.activities').append("<div class='activity-list'><span class='octicon octicon-git-branch'></span> "+ "<a href='" + currVal.profile_url + "'>"+ currVal.login + "</a> created branch <a href='"+ currVal.repo_url + "'>" + currVal.ref + "</a> at <a href='"+ currVal.repo_url + "'>" + currVal.repo + "</a> " + moment(currVal.created_at).fromNow())
+    $('.activities').append("<div class='activity-list'><span class='octicon octicon-git-branch'></span><span class='create-text'> "+ "<a href='" + currVal.profile_url + "'>"+ currVal.login + "</a> created branch <a href='"+ currVal.repo_url + "'><span class='branch-master'>" + currVal.ref + "</span></a>at <a href='"+ currVal.repo_url + "'>" + currVal.repo + "</a> <span class='create-date'>" + moment(currVal.created_at).fromNow()+ "</span></span></div>");
   }
   else{
-    $('.activities').append("<div class='activity-list'><span class='octicon octicon-repo'></span> "+ "<a href='" + currVal.profile_url + "'>"+ currVal.login + "</a> created <a href='"+ currVal.repo_url + "'>" + currVal.ref_type + "</a> at <a href='"+ currVal.repo_url + "'>" + currVal.repo + "</a> " + moment(currVal.created_at).fromNow())
+    $('.activities').append("<div class='activity-list'><span class='octicon octicon-repo'></span><span class='create-text'> "+ "<a href='" + currVal.profile_url + "'>"+ currVal.login + "</a> created <a href='"+ currVal.repo_url + "'>" + currVal.ref_type + "</a> at <a href='"+ currVal.repo_url + "'>" + currVal.repo + "</a> <span class='create-date'>" + moment(currVal.created_at).fromNow()+ "</span></span></div>");
   }
 });
 
