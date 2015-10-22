@@ -233,8 +233,9 @@ input {
   padding-left: 5px;
 }
 
-.repositories nav{
-
+.repositories {
+  border-bottom: 1px solid $gitBack;
+  margin-bottom: 50px;
 }
 
 article {
