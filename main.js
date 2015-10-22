@@ -1,31 +1,26 @@
 $(document).ready(function(){
 
-$("#avatar").html($('<img/>', {
-                                    src: user.avatar_url,
-                                    align:"center",
-                                    }));
+// adding side profile information
+$("#avatar").html("<img src='" + user.avatar_url + "'>");
 $('aside h1').html(user.name);
 $('aside span').html(user.login);
 
 $('aside ul li:nth-child(1)').html("<span class='octicon octicon-location'></span>" + user.location);
-$('aside ul li:nth-child(2)').html("<span class='octicon octicon-link'></span>" + user.blog);
+$('aside ul li:nth-child(2)').html("<span class='octicon octicon-link'></span>" + "<a href='"+user.blog+"'>" + user.blog+"</a>");
 $('aside ul li:nth-child(3)').html("<span class='octicon octicon-clock'></span>" + "Joined on " + moment(user.created_at).format('LL'));
 
-$('#followers').html("<strong>"+ user.followers + "</strong>" +"<br>"+ "<span>Followers</span>");
-$('#starred').html("<strong>"+ user.public_gists + "</strong>" +"<br>"+ "<span>Starred</span>");
-$('#following').html("<strong>"+ user.following + "</strong>" +"<br>"+ "<span>Following</span>");
+$('#followers').html("<a href='" + user.follower_url + "'><strong>"+ user.followers + "</strong>" +"<br>"+ "<span color='gray'>Followers</span></a>");
+$('#starred').html("<a href='" + user.starred_url + "'><strong>"+ user.public_gists + "</strong>" +"<br>"+ "<span color='gray'>Starred</span></a>");
+$('#following').html("<a href='" + user.following_url + "'><strong>"+ user.following + "</strong>" +"<br>"+ "<span color='gray'>Following</span></a>");
 
-$('header ul:nth-child(2) li:nth-child(3)').html($('<img/>', {
-                                    src: user.avatar_url,
-                                    height: "20px"
-                                    }));
-  $('header ul:nth-child(2) li:nth-child(3)').append("<span class='octicon octicon-triangle-down'></span>");
+//adding header information
+$('header ul:nth-child(2) li:nth-child(3)').html("<a href='" + user.html_url + "'><img src='" + user.avatar_url + "'><span class='octicon octicon-triangle-down'></span></a>")
 
-});
-/* for repos
+// adding organization information to side profile
+$('#org').html("<img src='" + orgs.org_url + "'>");
 
-need repo.name (and it's url repo.url), repo.description, repo.updated_at,  then other side repo.language, repo.stargazers_count, repo.forks
-*/
+//Sorting then inserting repos
+
 var sortedRepos = _.sortBy(repos, 'updated_at');
 sortedRepos.reverse();
 
@@ -40,52 +35,40 @@ _.each(sortedRepos, function(currVal, idx, arr){
 _.each(sortedRepos, function(currVal, idx, arr){
 
   if(currVal.description !==""){
-  $('article > ul').append("<li><section class='list-left'><a href=''>"+ currVal.name+ "</a><br>"+"<span>"+ currVal.description + "</span><br>" + "<span>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</li><li><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</li></ul></section></li>");
+  $('article > ul').append("<li><section class='list-left'><a href='"+ currVal.html_url + "'>" + currVal.name+ "</a><br>"+"<span class='repo-description'>"+ currVal.description + "</span><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</li><li><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</li></ul></section></li>");
 
 }
   else{
-    $('article > ul').append("<li><section class='list-left'><a href=''>"+ currVal.name+ "</a><br>" + "<span>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</li><li><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</li></ul></section></li>");
+    $('article > ul').append("<li><section class='list-left'><a href='" + currVal.html_url + "'>"+ currVal.name+ "</a><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</li><li><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</li></ul></section></li>");
 
 
   }
 });
 
+
+//Nav bar click functionality  changes borders and what page is loaded
 $('.repoNav').click(function(event){
   event.preventDefault();
   $('.repositories').css('display','inline-block');
   $('.activities').css('display','none');
+  $(this).css('color','black');
+  $(this).addClass('picked');
+  $('.activityNav').removeClass('picked');
+  $('.activityNav').css('color','gray');
 });
 
 $('.activityNav').click(function(event){
   event.preventDefault();
   $('.repositories').css('display','none');
   $('.activities').css('display','inline-block');
+  $(this).css('color','black');
+  $(this).addClass('picked');
+  $('.repoNav').removeClass('picked');
+  $('.repoNav').css('color','gray');
 });
 
-/* for activity
+// activity data set. First map it to easier to manage ones based on type of event
 
-need activity.actor.login, activity.type, activity.payload.ref, activity.repo.name, activity.created_at
-
-
-push also has activity.avatar.url  and activity.payload.description, and activity.payload.commits.sha(first 7 only)
-*/
-
-/*
-var shortActivity =[];
-
-_.each(activity, function(currVal, idx, arr){
-
-  shortActivity[idx]["login"]=currVal.actor.login;
-  shortActivity[idx]["type"] = currVal.type;
-  shortActivity[idx]["ref"] = currVal.payload.ref;
-  shortActivity[idx]["repo"] = currVal.repo.name;
-  shortActivity[idx]["time"] = currVal.created_at;
-  shortActivity[idx]["avatar"] = currVal.avatar_url;
-  shortActivity[idx]["description"] = currVal.payload.description;
-  //shortActivity["id"] = currVal.payload.commits.sha;
-
-
-});*/
 var shortActivity = activity.map(function(item){
 
   if (item.type === "CreateEvent"){
@@ -117,9 +100,12 @@ var shortActivity = activity.map(function(item){
   }
 });
 
+//sort activity by time
+
 var sortedActivity = _.sortBy(shortActivity,'time');
 sortedActivity.reverse();
 
+// display activities on page based on type of activity
 
 _.each(sortedActivity, function(currVal, idx, arr){
 
@@ -133,4 +119,7 @@ _.each(sortedActivity, function(currVal, idx, arr){
   else{
     $('.activities').append("<div class='activity-list'><span class='octicon octicon-repo'></span> "+ "<a href='" + currVal.profile_url + "'>"+ currVal.login + "</a> created <a href='"+ currVal.repo_url + "'>" + currVal.ref_type + "</a> at <a href='"+ currVal.repo_url + "'>" + currVal.repo + "</a> " + moment(currVal.created_at).fromNow())
   }
+});
+
+
 });

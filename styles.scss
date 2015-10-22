@@ -1,14 +1,19 @@
-$gitBack: #EDEBEB;
+$gitBack: #EBEBEB;
 $linkBlue: #4981C8;
+$gitBorder: #CCC8C8;
 
-.body{
-  margin: 0;
-  padding: 0;
+body{
+  margin-top: 0;
+  margin-left: 0;
+  font-family: Helvetica, arial, sans-serif;
 }
 
 a {
   text-decoration: none;
   color:$linkBlue;
+  &:hover{
+    text-decoration: underline;
+  }
 }
 
 ul{
@@ -18,16 +23,30 @@ ul{
 header{
   background-color: $gitBack;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+  font-size: 12px;
   ul{
     display:inline-block;
     li{
       display:inline-block;
+      margin: 0 7px;
     }
   }
   img{
+    height: 20px;
     vertical-align: text-bottom;
+    border-radius: 3px;
   }
+}
+
+.octicon-triangle-down{
+  font-size: 10px;
+  margin-left: 3px;
+  vertical-align: text-top;
+}
+
+.octicon-plus, .octicon-bell{
+  vertical-align: text-bottom;
 }
 
 nav ul{
@@ -37,20 +56,80 @@ nav ul{
   }
   li{
     display:inline-block;
+
     input{
-      width: 150px;
+      width: 250px;
+      min-height: 28px;
     }
   }
 }
 
+#create{
+  height: 32px;
+  background-color: $gitBack;
+  border: 1px solid $gitBorder;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  &:hover{
+    background-color: #DEDEDE;
+  }
+}
+
+#new-repo{
+  height: 32px;
+  background-image: linear-gradient(#92DA79, #5F944D);
+  border: 1px solid #568C44;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  &:hover{
+    background-image: linear-gradient(#8ED276, #588847);
+  }
+
+}
+#repo-links{
+  //padding-left: 10px;
+  padding-top:0;
+  float: right;
+  font-size: 14px;
+}
 nav ul:nth-child(1){
   padding-left: 5px;
 }
 #top-left, #bottom-left{
   padding-left: 0;
+  span{
+    font-size:26px;
+  }
 }
 #top-right, #bottom-right{
   float: right;
+}
+#top-left {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  a{
+    color: black;
+    &:hover{
+      color: $linkBlue;
+      text-decoration: none;
+    }
+  }
+}
+#top-right {
+  margin-top: 8px;
+  margin-bottom: 7px;
+  a{
+    color: black;
+    &:hover{
+      color: $linkBlue;
+      text-decoration: none;
+    }
+  }
 }
 
 .container {
@@ -66,6 +145,7 @@ aside {
   display: inline-block;
   img{
     width: 100%;
+    border-radius: 10px;
   }
 }
 
@@ -85,6 +165,7 @@ aside ul {
   padding-left: 0;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-bottom: 1px;
   border-top: 1px solid $gitBack;
   border-bottom: 1px solid $gitBack;
   overflow-x: hidden;
@@ -92,7 +173,17 @@ aside ul {
   text-overflow: ellipsis;
 
   span{
-    padding-right: 4px;
+    margin-right: 8px;
+    color: gray;
+  }
+  li{
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    margin-top:5px;
+    margin-bottom: 5px;
+
   }
 }
 
@@ -109,27 +200,41 @@ aside ul {
 
 footer {
   padding-top:20px;
-  font-size:14px;
+  font-size:12px;
+  color: gray;
   ul{
     display:inline-block;
     li{
       display:inline-block;
+      margin: 0 3px;
     }
   }
   span{
-    margin: 0 9%;
+    margin: 0 11%;
+    color: $gitBack;
+    &:hover{
+      color: gray;
+    }
+  }
+  .octicon{
+    font-size: 26px;
   }
 }
+form{
 
+}
 input {
-  width: 250px;
-  min-height: 30px;
-  border-radius: 2px;
-  font-size: 16px;
+  width: 350px;
+  min-height: 25px;
+  //border-radius: 2px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid $gitBorder;
+  padding-left: 5px;
 }
 
 .repositories nav{
-  border-bottom: 1px solid $gitBack;
+
 }
 
 article {
@@ -138,8 +243,9 @@ article {
     padding-left: 5px;
   }
   li{
-  border-bottom: 1px solid $gitBack;
-  padding-bottom: 10px;
+  border-top: 1px solid $gitBack;
+  padding-bottom: 20px;
+  padding-top: 20px;
   a{
     padding-left: 0;
   }
@@ -151,39 +257,51 @@ article {
   li{
     display: inline-block;
   }
+  li:nth-child(2), li:nth-child(3){
+    &:hover{
+      color: $linkBlue;
+    }
+  }
 }
 .list-left{
   display: inline-block;
   width: 60%;
+  line-height: 24px;
+  a{
+    font-weight: bold;
+    font-size: 20px;
+  }
 }
 .list-right{
   display:inline-block;
   width: 30%;
   float: right;
+  font-size:12px;
+  font-weight: bold;
+  color: #828181;
   li{
     border: none;
+    margin-left:5px;
+    margin-right:5px;
+    padding-top: 0;
+
   }
 }
 
+.repo-description{
+  font-size: 14px;
+  color: #4B4B4B;
+
+}
+.repo-updated{
+  font-size: 12px;
+  color: #A9A8A8;
+}
 
 .activities{
   display: none;
 }
 
-/*.activity-list{
-
-  &>li{
-    display:inline-block;
-    vertical-align: top;
-
-  }
-
-}
-
-.push-list{
-  border-bottom: 1px solid $gitBack;
-}
-*/
 .push-list-right{
   vertical-align: top;
   display: inline-block;
@@ -210,4 +328,87 @@ article {
     border-radius:2px;
     vertical-align: text-top;
   }
+}
+
+#follow {
+  section{
+    text-align: center;
+    color: gray;
+      a{
+        padding: 0;
+        color: gray;
+        &:hover{
+          color: $linkBlue;
+          text-decoration: none;
+        }
+    }
+    strong{
+      color: $linkBlue;
+      font-size: 30px;
+    }
+    span{
+      margin-right: 0;
+    }
+}
+}
+
+aside{
+  margin-right: 20px;
+  h1{
+    font-size: 30px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+  &> span{
+    color: gray;
+    font-size: 20px;
+    font-weight: lighter;
+  }
+  h2{
+    font-size: 16px;
+  }
+}
+
+#pages {
+  border-bottom: 1px solid $gitBack;
+  padding-bottom: 15px;
+  a{
+    font-size: 16px;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+.repoNav{
+  color: black;
+  padding-bottom: 15px;
+}
+
+.picked{
+  border-bottom: 1px solid white;
+  border-left: 1px solid $gitBack;
+  border-top: 1px solid $gitBack;
+  border-right: 1px solid $gitBack;
+  border-radius: 2px 2px 1px 1px;
+}
+
+.contribNav, .activityNav{
+  color: gray;
+  padding-bottom: 15px;
+}
+
+#edit-profile{
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: $gitBack;
+    border: 1px solid $gitBorder;
+    border-radius: 2px;
+    &:hover{
+      background-color: #DEDEDE;
+    }
+  }
+
+#org img{
+  width: 50px;
 }

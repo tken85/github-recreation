@@ -10,19 +10,21 @@
 <header>
   <div class="container">
   <ul id="top-left">
-    <li><span class="mega-octicon octicon-mark-github"></span></li>
-    <li><input type="text" name="search" value="" placeholder="Search Github"></li>
-    <li>Pull Requests</li>
-    <li>Issues</li>
-    <li>Gist</li>
+    <a href="https://github.com"><li><span class="mega-octicon octicon-mark-github"></span></li></a>
+    <li><form><input type="text" name="search" value="" placeholder="Search Github"></form></li>
+    <a href="https://github.com/pulls"><li>Pull requests</li></a>
+    <a href="https://github.com/issues"><li>Issues</li></a>
+    <a href="https://gist.github.com/"><li>Gist</li></a>
   </ul>
   <ul id="top-right">
-    <li><span class="octicon octicon-bell"></span></li>
-    <li><span class="octicon octicon-plus"></span><span class="octicon octicon-triangle-down"></span></li>
+    <a href="https://github.com/notifications"><li><span class="octicon octicon-bell"></span></li></a>
+    <a href="https://github.com/new"><li><span class="octicon octicon-plus"></span><span class="octicon octicon-triangle-down"></span></li></a>
     <li></li>
   </ul>
 </div>
 </header>
+
+
 <div class="container main">
   <aside>
     <div id="avatar"></div>
@@ -41,66 +43,41 @@
     </div>
     <div>
       <h2>Organizations</h2>
+      <div id="org"></div>
     </div>
-
-
   </aside>
+
   <section>
-    <nav>
+    <nav id="pages">
       <a href="#" class="contribNav"><span class="octicon octicon-diff-added"></span>Contributions</a>
-      <a href="#" class="repoNav"><span class="octicon octicon-repo"></span>Repositories</a>
-      <a href="#" class="activityNav"><span class="octicon octicon-rss"></span>Public Activity</a>
+      <a href="#" class="repoNav picked"><span class="octicon octicon-repo"></span>Repositories</a>
+      <a href="#" class="activityNav"><span class="octicon octicon-rss"></span>Public activity</a>
+      <button id="edit-profile"><span class="octicon octicon-pencil"></span>Edit profile</button>
     </nav>
     <section class="repositories">
       <nav>
         <ul>
           <li><input type="text" name="search" value="" placeholder="Find a repository..."></li>
-          <li><button class="create">Search</button></li>
+          <li><button id="create">Search</button></li>
         </ul>
-        <ul>
+        <ul id="repo-links">
           <a href=""><li>All</li></a>
           <a href=""><li>Public</li></a>
           <a href=""><li>Private</li></a>
           <a href=""><li>Sources</li></a>
           <a href=""><li>Fork</li></a>
           <a href=""><li>Mirrors</li></a>
-          <li><button class="create"><span class="octicon octicon-repo"></span>New</button></li>
+          <li><button id="new-repo"><span class="octicon octicon-repo"></span>New</button></li>
         </ul>
       </nav>
         <article>
         <ul>
-          <!--
-          <li><section class="list-left"><a href="">map-filter</a><br><span>Description</span><br><span>Updated</span></section>
-          <section class="list-right"><ul class="repo-right">
-            <li>javascript</li>
-            <li><span class="octicon octicon-star"></span>0</li>
-            <li><span class="octicon octicon-git-branch"></span>0</li>
-          </ul></section></li> -->
+          <!--Where we insert the repos list into with jquery -->
         </ul>
       </article>
     </section>
     <section class="activities">
-        <!--<ul class="activity-list">
-          <li><span class="mega-octicon octicon-git-commit"></span></li>
-          <li><ul>
-            <li>2 hours ago</li>
-            <li>tken85 pushed to master at lalalal/file</li>
-            <li><img src="http://fillmurray.com/30/30"><span class="octicon octicon-mark-github"></span>888888 forgot to commit earlier</li>
-          </ul></li>
-        </ul> -->
-        <div class="activity-list">
-        <section class="push-list-left"><span class="mega-octicon octicon-git-commit"></span></section>
-        <section class="push-list-right">
-          <ul>
-            <li>2 hours ago</li>
-            <li>tken85 pushed to master at lalalal/file</li>
-            <li><img src="http://fillmurray.com/30/30"><span class="octicon octicon-mark-github"></span>888888 forgot to commit earlier</li>
-          </ul>
-        </section>
-      </div>
-      <div class="activity-list">
-        <span class="octicon octicon-git-branch"></span> created blalalbalbla bla bal
-      </div>
+        <!--Where we insert the public activities list into -->
 
     </section>
 </section>
@@ -115,7 +92,7 @@
     <li><a href="https://github.com/contact">Contact</a></li>
     <li><a href="https://help.github.com/">Help</a></li>
   </ul>
-  <span class="mega-octicon octicon-mark-github"></span>
+  <span class="octicon octicon-mark-github"></span>
   <ul id="bottom-right">
     <li><a href="https://status.github.com/">Status</a></li>
     <li><a href="https://developer.github.com/">API</a></li>
