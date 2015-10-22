@@ -35,11 +35,11 @@ _.each(sortedRepos, function(currVal, idx, arr){
 _.each(sortedRepos, function(currVal, idx, arr){
 
   if(currVal.description !==""){
-  $('article > ul').append("<li><section class='list-left'><a href='"+ currVal.html_url + "'>" + currVal.name+ "</a><br>"+"<span class='repo-description'>"+ currVal.description + "</span><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</li><li><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</li></ul></section></li>");
+  $('article > ul').append("<li><section class='list-left'><a href='"+ currVal.html_url + "'>" + currVal.name+ "</a><br>"+"<span class='repo-description'>"+ currVal.description + "</span><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><a href='" + currVal.stargazers_url+"'><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</a></li><li><a href='" + currVal.forks_url + "'><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</a></li></ul></section></li>");
 
 }
   else{
-    $('article > ul').append("<li><section class='list-left'><a href='" + currVal.html_url + "'>"+ currVal.name+ "</a><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</li><li><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</li></ul></section></li>");
+    $('article > ul').append("<li><section class='list-left'><a href='" + currVal.html_url + "'>"+ currVal.name+ "</a><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><a href='" + currVal.stargazers_url+"'><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</a></li><li><a href='" + currVal.forks_url + "'><span class='octicon octicon-git-branch'></span>" + currVal.forks + "</a></li></ul></section></li>");
 
 
   }

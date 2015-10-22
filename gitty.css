@@ -195,6 +195,11 @@ article li {
   vertical-align: top; }
   .repo-right li {
     display: inline-block; }
+    .repo-right li a {
+      color: gray; }
+      .repo-right li a:hover {
+        text-decoration: none;
+        color: #4981C8; }
   .repo-right li:nth-child(2):hover, .repo-right li:nth-child(3):hover {
     color: #4981C8; }
 
