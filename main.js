@@ -9,7 +9,7 @@ $('aside ul li:nth-child(1)').html("<span class='octicon octicon-location'></spa
 $('aside ul li:nth-child(2)').html("<span class='octicon octicon-link'></span>" + "<a href='"+user.blog+"'>" + user.blog+"</a>");
 $('aside ul li:nth-child(3)').html("<span class='octicon octicon-clock'></span>" + "Joined on " + moment(user.created_at).format('LL'));
 
-$('#followers').html("<a href='" + user.follower_url + "'><strong>"+ user.followers + "</strong>" +"<br>"+ "<span color='gray'>Followers</span></a>");
+$('#followers').html("<a href='" + user.followers_url.split("api.").join("") + "'><strong>"+ user.followers + "</strong>" +"<br>"+ "<span color='gray'>Followers</span></a>");
 $('#starred').html("<a href='" + user.starred_url + "'><strong>"+ user.public_gists + "</strong>" +"<br>"+ "<span color='gray'>Starred</span></a>");
 $('#following').html("<a href='" + user.following_url + "'><strong>"+ user.following + "</strong>" +"<br>"+ "<span color='gray'>Following</span></a>");
 
@@ -35,11 +35,11 @@ _.each(sortedRepos, function(currVal, idx, arr){
 _.each(sortedRepos, function(currVal, idx, arr){
 
   if(currVal.description !==""){
-  $('article > ul').append("<li><section class='list-left'><a href='"+ currVal.html_url + "'>" + currVal.name+ "</a><br>"+"<span class='repo-description'>"+ currVal.description + "</span><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><a href='" + currVal.stargazers_url+"'><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</a></li><li><a href='" + currVal.forks_url + "'><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</a></li></ul></section></li>");
+  $('article > ul').append("<li><section class='list-left'><a href='"+ currVal.html_url + "'>" + currVal.name+ "</a><br>"+"<span class='repo-description'>"+ currVal.description + "</span><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><a href='" + currVal.stargazers_url + "'><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</a></li><li><a href='" + currVal.forks_url + "'><span class='octicon octicon-git-branch'></span>" + currVal.forks+ "</a></li></ul></section></li>");
 
 }
   else{
-    $('article > ul').append("<li><section class='list-left'><a href='" + currVal.html_url + "'>"+ currVal.name+ "</a><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><a href='" + currVal.stargazers_url+"'><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</a></li><li><a href='" + currVal.forks_url + "'><span class='octicon octicon-git-branch'></span>" + currVal.forks + "</a></li></ul></section></li>");
+    $('article > ul').append("<li><section class='list-left'><a href='" + currVal.html_url + "'>"+ currVal.name+ "</a><br>" + "<span class='repo-updated'>Updated "+ moment(currVal.updated_at).fromNow() + "</span></section><section class='list-right'><ul class='repo-right'><li>" + currVal.language + "</li><li><a href='" + currVal.stargazers_url  +"'><span class='octicon octicon-star'></span>" + currVal.stargazers_count+ "</a></li><li><a href='" + currVal.forks_url + "'><span class='octicon octicon-git-branch'></span>" + currVal.forks + "</a></li></ul></section></li>");
 
 
   }
@@ -78,8 +78,8 @@ var shortActivity = activity.map(function(item){
 			          repo: item.repo.name,
                 created_at: item.created_at,
                 ref_type: item.payload.ref_type,
-                repo_url: item.repo.url,
-                profile_url: item.actor.url,
+                repo_url: item.repo.url.split("api.").join(""),
+                profile_url: item.actor.url.split("api.").join(""),
 
 
     }
@@ -89,13 +89,13 @@ var shortActivity = activity.map(function(item){
             type: item.type,
             ref: item.payload.ref,
             repo: item.repo.name,
-            repo_url: item.repo.url,
+            repo_url: item.repo.url.split("api.").join(""),
             created_at: item.created_at,
             avatar: item.actor.avatar_url,
             message: item.payload.commits[0].message,
             commit_id: item.payload.commits[0].sha,
-            commit_url: item.payload.commits[0].url,
-            profile_url: item.actor.url,
+            commit_url: item.payload.commits[0].url.split("api.").join(""),
+            profile_url: item.actor.url.split("api.").join(""),
 
    }
   }
