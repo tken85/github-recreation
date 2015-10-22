@@ -122,5 +122,7 @@ _.each(sortedActivity, function(currVal, idx, arr){
   }
 });
 
+$('.activity-list').first().append("<span class='octicon octicon-rss rss'></span>");
+$('.activity-list').last().css('border-bottom', 'none');
 
 });

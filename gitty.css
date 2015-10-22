@@ -274,7 +274,7 @@ article li {
     height: 30px;
     border-radius: 2px;
     vertical-align: text-top; }
-  .activity-list .octicon, .activity-list .mega-octicon {
+  .activity-list .octicon-git-branch, .activity-list .octicon-repo, .activity-list .octicon-git-commit {
     color: #CCC8C8; }
   .activity-list .octicon-git-branch, .activity-list .octicon-repo {
     margin-left: 8px; }
@@ -354,3 +354,10 @@ aside {
 
 #org img {
   width: 50px; }
+
+.rss {
+  float: right;
+  color: white;
+  background-color: #FF7C0C;
+  padding: 2px 5px;
+  border-radius: 3px; }

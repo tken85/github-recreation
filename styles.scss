@@ -360,7 +360,7 @@ article {
     border-radius:2px;
     vertical-align: text-top;
   }
-  .octicon, .mega-octicon{
+  .octicon-git-branch, .octicon-repo, .octicon-git-commit{
     color: $gitBorder;
   }
 
@@ -381,6 +381,7 @@ article {
   padding: 2px 4px;
   border-radius: 2px;
 }
+
 #follow {
   section{
     text-align: center;
@@ -462,4 +463,12 @@ aside{
 
 #org img{
   width: 50px;
+}
+
+.rss {
+  float: right;
+  color: white;
+  background-color: #FF7C0C;
+  padding: 2px 5px;
+  border-radius: 3px;
 }
